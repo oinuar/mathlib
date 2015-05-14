@@ -137,71 +137,84 @@ namespace Math {
    }
 
 
-   template <class T> inline
-   Matrix<1, 1, T, void>::Matrix(const bool& initialize) {
+   template <class T, class Chunk> inline
+   Matrix<1, 1, T, Chunk>::Matrix(const bool& initialize) {
       if (initialize)
          _value = 0;
    }
 
-   template <class T>
+   template <class T, class Chunk>
    template <class Iter> inline
-   Matrix<1, 1, T, void>::Matrix(Iter begin, Iter end) {
+   Matrix<1, 1, T, Chunk>::Matrix(Iter begin, Iter end) {
       for (Iter it = begin; it != end; ++it)
          _value = *it;
    }
 
-   template <class T> inline
-   Matrix<1, 1, T, void>::Matrix(const T& value) {
+   template <class T, class Chunk> inline
+   Matrix<1, 1, T, Chunk>::Matrix(const T& value) {
       _value = value;
    }
 
-   template <class T> inline
-   Matrix<1, 1, T, void>::operator T() const {
+   template <class T, class Chunk> inline
+   Matrix<1, 1, T, Chunk>::operator T() const {
       return _value;
    }
 
-   template <class T> inline
-   T* Matrix<1, 1, T, void>::data() {
+   template <class T, class Chunk> inline
+   T* Matrix<1, 1, T, Chunk>::data() {
       return &_value;
    }
 
-   template <class T> inline
-   const size_t Matrix<1, 1, T, void>::rows() const {
+   template <class T, class Chunk> inline
+   const size_t Matrix<1, 1, T, Chunk>::rows() const {
       return 1;
    }
 
-   template <class T> inline
-   const size_t Matrix<1, 1, T, void>::cols() const {
+   template <class T, class Chunk> inline
+   const size_t Matrix<1, 1, T, Chunk>::cols() const {
       return 1;
    }
 
-   template <class T> inline
-   T& Matrix<1, 1, T, void>::operator ()(const size_t& i, const size_t& j) {
+   template <class T, class Chunk> inline
+   T& Matrix<1, 1, T, Chunk>::operator ()(const size_t& i, const size_t& j) {
       assert(i == 1 && j == 1);
       return _value;
    }
 
-   template <class T> inline
-   const T& Matrix<1, 1, T, void>::operator ()(const size_t& i, const size_t& j) const {
+   template <class T, class Chunk> inline
+   const T& Matrix<1, 1, T, Chunk>::operator ()(const size_t& i, const size_t& j) const {
       assert(i == 1 && j == 1);
       return _value;
    }
 
-   template <class T> inline
-   T& Matrix<1, 1, T, void>::operator [](const size_t& index) {
+   template <class T, class Chunk> inline
+   T& Matrix<1, 1, T, Chunk>::operator [](const size_t& index) {
       assert(index == 1);
       return _value;
    }
 
-   template <class T> inline
-   const T& Matrix<1, 1, T, void>::operator [](const size_t& index) const {
+   template <class T, class Chunk> inline
+   const T& Matrix<1, 1, T, Chunk>::operator [](const size_t& index) const {
       assert(index == 1);
       return _value;
    }
 
-   template <class T> inline
-   const T* Matrix<1, 1, T, void>::data() const {
+   template <class T, class Chunk> inline
+   const T* Matrix<1, 1, T, Chunk>::data() const {
       return &_value;
+   }
+   
+   
+   template <size_t N, class T> inline
+   Matrix<N, N, T> eye() {
+      Matrix<N, N, T> out(false);
+
+      for (size_t i = 1; i <= N; ++i) {
+         for (size_t j = 1; j <= N; ++j)
+            out(i, j) = (T)(i == j ? 1 : 0);
+      }
+
+      return std::move(out);
    }
 }
 
@@ -240,6 +253,11 @@ Math::Matrix<M, N, T> operator +(const Math::Matrix<M, N, T, C>& lhs, const Math
    }
 
    return std::move(out);
+}
+
+template <size_t M, size_t N, class T, class C, class D> inline
+Math::Matrix<M, N, T> operator -(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, D>& rhs) {
+   return std::move(lhs + (-rhs));
 }
 
 template <size_t M, size_t N, class T, class C> inline

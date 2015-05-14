@@ -16,11 +16,6 @@ namespace Math {
       return lhs < rhs ? lhs : rhs;
    }
 
-   template <class T> inline
-   T Sqrt(const T& value) {
-      return std::sqrt(value);
-   }
-
    template <class T> T inline
    Floor(const T& value) {
       return std::floor(value);
@@ -30,4 +25,24 @@ namespace Math {
    T Round(const T& value, const T& precision) {
       return Floor(value * ((T)1.0 / precision) + (T)0.5) / ((T)1.0 / precision);
    }
+
+   template <class T> inline
+   T Sqrt(const T& value) {
+      return std::sqrt(value);
+   }
+
+   template <class T> inline
+   T Sin(const Degree<T>& value) {
+      return std::sin(Radian<T>(value));
+   }
+
+   template <class T>
+   T Cos(const Degree<T>& value) {
+      return std::cos(Radian<T>(value));
+   }
+
+   template <class T> T Tan(const Degree<T>& value) {
+      return std::tan(Radian<T>(value));
+   }
+
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "unit.hpp"
 #include <cmath>
 
 namespace Math {
@@ -18,15 +19,28 @@ namespace Math {
 
    /*!
     */
-   template <class T> T Sqrt(const T& value);
-
-   /*!
-    */
    template <class T> T Floor(const T& value);
 
    /*!
     */
    template <class T> T Round(const T& value, const T& precision = 1);
+
+   /*!
+    */
+   template <class T> T Sqrt(const T& value);
+
+   /*!
+    */
+   template <class T> T Sin(const Degree<T>& value);
+
+   /*!
+    */
+   template <class T> T Cos(const Degree<T>& value);
+
+   /*!
+    */
+   template <class T> T Tan(const Degree<T>& value);
+
 }
 
 #include "functions.inl"

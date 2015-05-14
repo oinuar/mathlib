@@ -1,17 +1,5 @@
 namespace Math {
 
-   template <size_t N, class T> inline
-   Matrix<N, N, T> eye() {
-      Matrix<N, N, T> out(false);
-
-      for (size_t i = 1; i <= N; ++i) {
-         for (size_t j = 1; j <= N; ++j)
-            out(i, j) = (T)(i == j ? 1 : 0);
-      }
-
-      return std::move(out);
-   }
-
    template <size_t M, size_t N, class T> inline
    size_t lu(const Matrix<M, N, T>& m, Matrix<M, M, T>& l, Matrix<M, N, T>& u, Matrix<M, M, T>& pivot) {
       pivot = eye<M, T>();

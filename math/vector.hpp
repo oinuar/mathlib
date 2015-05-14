@@ -1,6 +1,7 @@
 #pragma once
 
 #include "matrix.hpp"
+#include "functions.hpp"
 
 namespace Math {
 
@@ -8,7 +9,7 @@ namespace Math {
     */
    template <size_t N, class T> class Vector : public Matrix<N, 1, T> {
    public:
-      
+
       /*! Constructs a vector.
        *
        * @param initialize @c true to initialize all elements to zero;
@@ -230,6 +231,19 @@ namespace Math {
    typedef Vector<3, float> vector3f;
    typedef Vector<4, double> vector4;
    typedef Vector<4, float> vector4f;
+
+   /*! Normalizes a vector.
+    *
+    * @param vector Subject vector.
+    * @return A normalized vector.
+    */
+   template <size_t N, class T> Vector<N, T> normalize(const Vector<N, T>& vector);
+
+   /*! Find outs the magnitude of a vector.
+    *
+    * @return Magnitude of the vector.
+    */
+   template <size_t N, class T> T length(const Vector<N, T>& vector);
 }
 
 /*! Calculates a dot product of two vectors.

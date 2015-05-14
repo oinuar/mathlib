@@ -7,12 +7,6 @@
 
 namespace Math {
 
-   /*! Constructs an identity matrix of given size.
-    *
-    * @return Identity matrix of size NxN.
-    */
-   template <size_t N, class T = double> Matrix<N, N, T> eye();
-
    /*! Calculates a LU decomposition and returns individual element matrices.
     *
     * @param m Subject matrix.

@@ -8,7 +8,7 @@ namespace Math {
    class Pi {
    public:
 
-      Pi();
+      Pi() {}
 
       operator T() const {
          return (T)3.14159265358979323846;

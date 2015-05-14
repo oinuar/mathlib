@@ -156,6 +156,23 @@ namespace Math {
    const T& Vector<2, T>::y() const {
       return (*this)(2, 1);
    }
+
+
+   template <size_t N, class T> inline
+   Vector<N, T> normalize(const Vector<N, T>& vector) {
+      Vector<N, T> out(false);
+      auto len = length(vector);
+
+      for (size_t i = 1; i <= N; ++i)
+         out[i] = vector[i] / len;
+
+      return std::move(out);
+   }
+
+   template <size_t N, class T> inline
+   T length(const Vector<N, T>& vector) {
+      return Math::Sqrt(vector * vector);
+   }
 }
 
 template <size_t N, class T> inline
@@ -166,8 +183,8 @@ T operator *(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs) {
 template <class T> inline
 Math::Vector<3, T> operator %(const Math::Vector<3, T>& lhs, const Math::Vector<3, T>& rhs) {
    return std::move(Math::Vector<3, T>(
-      y() * other.z - z() * other.y(),
-      z() * other.x - x() * other.z(),
-      x() * other.y - y() * other.x()
+      lhs.y() * rhs.z() - lhs.z() * rhs.y(),
+      lhs.z() * rhs.x() - lhs.x() * rhs.z(),
+      lhs.x() * rhs.y() - lhs.y() * rhs.x()
    ));
 }

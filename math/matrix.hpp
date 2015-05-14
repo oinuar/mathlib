@@ -155,7 +155,7 @@ namespace Math {
 
    /*! Scalar specialization of 1 by 1 dimensional matrix.
     */
-   template <class T> class Matrix<1, 1, T, void> {
+   template < class T, class Chunk> class Matrix< 1, 1, T, Chunk> {
    public:
 
       //! Matrix row size constant.
@@ -255,6 +255,12 @@ namespace Math {
    typedef Matrix<3, 3, float> mat3x3f;
    typedef Matrix<4, 4, double> mat4x4;
    typedef Matrix<4, 4, float> mat4x4f;
+
+   /*! Constructs an identity matrix of given size.
+    *
+    * @return Identity matrix of size NxN.
+    */
+   template <size_t N, class T = double> Matrix<N, N, T> eye();
 }
 
 /*! Negates a matrix.
@@ -278,6 +284,14 @@ template <size_t M, size_t N, class T, class C> Math::Matrix<N, M, T> operator ~
  * @return Added matrix.
  */
 template <size_t M, size_t N, class T, class C, class D> Math::Matrix<M, N, T> operator +(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, D>& rhs);
+
+/*! Substracts two matrices.
+ *
+ * @param lhs Left hand side matrix.
+ * @param rhs Right hand side matrix.
+ * @return Added matrix.
+ */
+template <size_t M, size_t N, class T, class C, class D> Math::Matrix<M, N, T> operator -(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, D>& rhs);
 
 /*! Multiplies matrix with a scalar.
  *
