@@ -51,13 +51,13 @@ namespace Math {
    template <size_t M, size_t N, class T, class C> inline
    T& Matrix<M, N, T, C>::operator ()(const size_t& i, const size_t& j) {
       assert(i > 0 && j > 0 && i <= M && j <= N);
-      return _data[(j - 1) + (i - 1) * N];
+      return _data[(j - 1) * M + (i - 1)];
    }
 
    template <size_t M, size_t N, class T, class C> inline
    const T& Matrix<M, N, T, C>::operator ()(const size_t& i, const size_t& j) const {
       assert(i > 0 && j > 0 && i <= M && j <= N);
-      return _data[(j - 1) + (i - 1) * N];
+      return _data[(j - 1) * M + (i - 1)];
    }
 
    template <size_t M, size_t N, class T, class C> inline
@@ -120,7 +120,6 @@ namespace Math {
 
    template <size_t M, size_t N, class T, class C> inline
    void Matrix<M, N, T, C>::set_row(const size_t& row, const Matrix<1, N, T>& m) {
-      assert(row < M);
       auto p = m.data();
 
       for (size_t i = 1; i <= N; ++i)

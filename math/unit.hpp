@@ -36,7 +36,7 @@ namespace Math {
       Radian(const T& value) : _value(value) {}
 
       operator T() const {
-         return _value * ((T)180.0 / Pi<T>());
+         return _value * (Pi<T>() / (T)180);
       }
 
    private:

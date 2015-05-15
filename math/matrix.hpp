@@ -289,7 +289,7 @@ template <size_t M, size_t N, class T, class C, class D> Math::Matrix<M, N, T> o
  *
  * @param lhs Left hand side matrix.
  * @param rhs Right hand side matrix.
- * @return Added matrix.
+ * @return Substracted matrix.
  */
 template <size_t M, size_t N, class T, class C, class D> Math::Matrix<M, N, T> operator -(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, D>& rhs);
 

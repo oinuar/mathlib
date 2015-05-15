@@ -51,6 +51,12 @@ namespace Math {
        */
       Vector(const Matrix<4, 1, T>& other);
 
+      /*! Converts a 3-dimensional vector to 4-dimensional one.
+       *
+       * @param other Vector to convert.
+       */
+      explicit Vector(const Vector<3, T>& other, const T& w);
+
       /*! Gets X element of vector.
        *
        * @return Vector X element.
@@ -225,12 +231,12 @@ namespace Math {
       const T& y() const;
    };
 
-   typedef Vector<2, double> vector2;
-   typedef Vector<2, float> vector2f;
-   typedef Vector<3, double> vector3;
-   typedef Vector<3, float> vector3f;
-   typedef Vector<4, double> vector4;
-   typedef Vector<4, float> vector4f;
+   typedef Vector<2, double> vec2;
+   typedef Vector<2, float> vec2f;
+   typedef Vector<3, double> vec3;
+   typedef Vector<3, float> vec3f;
+   typedef Vector<4, double> vec4;
+   typedef Vector<4, float> vec4f;
 
    /*! Normalizes a vector.
     *

@@ -20,6 +20,14 @@ namespace Math {
    }
 
    template <class T> inline
+   Vector<4, T>::Vector(const Vector<3, T>& other, const T& w) : Matrix(false) {
+      this->x() = other.x();
+      this->y() = other.y();
+      this->z() = other.z();
+      this->w() = w;
+   }
+
+   template <class T> inline
    T& Vector<4, T>::x() {
       return (*this)(1, 1);
    }
