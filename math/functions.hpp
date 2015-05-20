@@ -19,6 +19,10 @@ namespace Math {
 
    /*!
     */
+   template <class T> T Clamp(const T& value, const T& lower, const T& upper);
+
+   /*!
+    */
    template <class T> T Floor(const T& value);
 
    /*!
@@ -40,6 +44,14 @@ namespace Math {
    /*!
     */
    template <class T> T Tan(const Degree<T>& value);
+
+   /*!
+    */
+   template <class T> Degree<T> ASin(const T& value);
+
+   /*!
+    */
+   template <class T> Degree<T> ACos(const T& value);
 
 }
 

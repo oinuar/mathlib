@@ -16,6 +16,11 @@ namespace Math {
       return lhs < rhs ? lhs : rhs;
    }
 
+   template <class T> inline
+   T Clamp(const T& value, const T& lower, const T& upper) {
+      return Max(lower, Min(value, upper));
+   }
+
    template <class T> T inline
    Floor(const T& value) {
       return std::floor(value);
@@ -36,13 +41,24 @@ namespace Math {
       return std::sin(Radian<T>(value));
    }
 
-   template <class T>
+   template <class T> inline
    T Cos(const Degree<T>& value) {
       return std::cos(Radian<T>(value));
    }
 
-   template <class T> T Tan(const Degree<T>& value) {
+   template <class T> inline
+   T Tan(const Degree<T>& value) {
       return std::tan(Radian<T>(value));
+   }
+
+   template <class T> inline
+   Degree<T> ASin(const T& value) {
+      return std::asin(value) * ((T)180 / Pi<T>());
+   }
+
+   template <class T> inline
+   Degree<T> ACos(const T& value) {
+      return std::acos(value) * ((T)180 / Pi<T>());
    }
 
 }
