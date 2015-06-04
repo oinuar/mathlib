@@ -21,9 +21,14 @@ namespace Math {
       return Max(lower, Min(value, upper));
    }
 
-   template <class T> T inline
-   Floor(const T& value) {
+   template <class T> inline
+   T Floor(const T& value) {
       return std::floor(value);
+   }
+
+   template <class T> inline
+   T Ceil(const T& value) {
+      return std::ceil(value);
    }
 
    template <class T> inline

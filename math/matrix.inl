@@ -73,6 +73,18 @@ namespace Math {
    }
 
    template <size_t M, size_t N, class T, class C> inline
+   bool Matrix<M, N, T, C>::operator ==(const Matrix<M, N, T, C>& other) const {
+      for (size_t i = 1; i <= M; ++i) {
+         for (size_t j = 1; j <= N; ++j) {
+            if ((*this)(i, j) != other(i, j))
+               return false;
+         }
+      }
+
+      return true;
+   }
+
+   template <size_t M, size_t N, class T, class C> inline
    const T* Matrix<M, N, T, C>::data() const {
       return _data;
    }

@@ -99,6 +99,13 @@ namespace Math {
        */
       const T& operator [](const size_t& index) const;
 
+      /*! Compares equality of two matrix elements.
+       *
+       * @param other Matrix to compare.
+       * @return @c true if matrix elements are equal; otherwise @c false.
+       */
+      bool operator ==(const Matrix<M, N, T, Chunk>& other) const;
+
       /*! Gets raw data pointer to matrix data.
        *
        * @return Cost data pointer to matrix data.

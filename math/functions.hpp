@@ -27,6 +27,10 @@ namespace Math {
 
    /*!
     */
+   template <class T> T Ceil(const T& value);
+
+   /*!
+    */
    template <class T> T Round(const T& value, const T& precision = 1);
 
    /*!

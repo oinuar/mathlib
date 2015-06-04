@@ -250,6 +250,7 @@ namespace Math {
     * @return Magnitude of the vector.
     */
    template <size_t N, class T> T length(const Vector<N, T>& vector);
+
 }
 
 /*! Calculates a dot product of two vectors.
@@ -267,5 +268,11 @@ template <size_t N, class T> T operator *(const Math::Vector<N, T>& lhs, const M
  * @return Cross producted vector.
  */
 template <class T> Math::Vector<3, T> operator %(const Math::Vector<3, T>& lhs, const Math::Vector<3, T>& rhs);
+
+template <> struct std::hash<Math::vec2> {
+   std::size_t operator()(const Math::vec2& k) const {
+      return std::hash<double>()(k.x()) ^ std::hash<double>()(k.y());
+   }
+};
 
 #include "vector.inl"
