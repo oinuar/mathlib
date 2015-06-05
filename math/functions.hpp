@@ -8,6 +8,10 @@ namespace Math {
    /*!
     */
    template <class T> T Abs(const T& value);
+   
+   /*!
+    */
+   template <class T> T Sign(const T& value);
 
    /*!
     */

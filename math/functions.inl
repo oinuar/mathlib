@@ -5,6 +5,11 @@ namespace Math {
    T Abs(const T& value) {
       return std::abs(value);
    }
+   
+   template <class T> inline
+   T Sign(const T& value) {
+      return value < (T)0 ? (T)-1 : (T)+1;
+   }
 
    template <class T> inline
    T Max(const T& lhs, const T& rhs) {
