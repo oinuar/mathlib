@@ -156,6 +156,18 @@ namespace Math {
        */
       template <size_t m, size_t n, class c> void set_sub(const size_t& i, const size_t& j, const Matrix<m, n, T, c>& matrix);
 
+      /*! Gets begin iterator of a matrix.
+       *
+       * @return Begin iterator of the matrix.
+       */
+      auto begin() const -> decltype(std::declval<Chunk>().begin());
+
+      /*! Gets end iterator of a matrix.
+       *
+       * @return End iterator of the matrix.
+       */
+      auto end() const -> decltype(std::declval<Chunk>().end());
+
    private:
       Chunk _data;
    };
@@ -315,5 +327,21 @@ template <size_t M, size_t N, class T, class C> Math::Matrix<M, N, T> operator *
  * @return Multiplied matrix.
  */
 template <size_t M, size_t N, size_t P, class T, class C, class D> Math::Matrix<M, P, T> operator *(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<N, P, T, D>& rhs);
+
+/*! Compares two matrices.
+ *
+ * @param lhs Left hand side matrix to compare.
+ * @param rhs Right hand side matrix to compare.
+ * @return @c true if @p lhs is equal to @p rhs.
+ */
+template <size_t M, size_t N, class T, class C> bool operator ==(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, C>& rhs);
+
+/*! Compares two matrices.
+ *
+ * @param lhs Left hand side matrix to compare.
+ * @param rhs Right hand side matrix to compare.
+ * @return @c true if @p lhs is not equal to @p rhs.
+ */
+template <size_t M, size_t N, class T, class C> bool operator !=(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, C>& rhs);
 
 #include "matrix.inl"

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <type_traits>
+#include <array>
+#include <vector>
 #include <cstring>
 
 namespace Math {
@@ -24,23 +26,31 @@ namespace Math {
       static const ChunkLocation Location = Stack;
 
       T& operator [](const size_t& index) {
-         return _data[index];
+         return _data.at(index);
       }
 
       const T& operator [](const size_t& index) const {
-         return _data[index];
+         return _data.at(index);
       }
 
       operator T*() {
-         return _data;
+         return _data.data();
       }
 
       operator const T*() const {
-         return _data;
+         return _data.data();
+      }
+
+      auto begin() const -> decltype(std::declval<std::array<T, M * N>>().cbegin()) {
+         return _data.cbegin();
+      }
+
+      auto end() const -> decltype(std::declval<std::array<T, M * N>>().cend()) {
+         return _data.cend();
       }
 
    private:
-      T _data[M * N];
+      std::array<T, M * N> _data;
    };
 
    template <size_t M, size_t N, class T, size_t MaxStackAllocSize>
@@ -49,46 +59,35 @@ namespace Math {
 
       static const ChunkLocation Location = Heap;
 
-      MatrixChunk() : _data(new T[M * N]) {
+      MatrixChunk() : _data(M * N) {
 
-      }
-
-      MatrixChunk(MatrixChunk&& other) : _data(other._data) {
-         other._data = nullptr;
-      }
-
-      MatrixChunk(const MatrixChunk& other) : _data(new T[M * N]) {
-         memcpy(_data, other._data, sizeof(T) * M * N);
-      }
-
-      ~MatrixChunk() {
-         delete[] _data;
       }
 
       T& operator [](const size_t& index) {
-         return _data[index];
+         return _data.at(index);
       }
 
       const T& operator [](const size_t& index) const {
-         return _data[index];
+         return _data.at(index);
       }
 
       operator T*() {
-         return _data;
+         return _data.data();
       }
 
       operator const T*() const {
-         return _data;
+         return _data.data();
       }
 
-      MatrixChunk& operator =(const MatrixChunk& other) {
-         if (this != &other)
-            memcpy(_data, other._data, sizeof(T) * M * N);
+      auto begin() const -> decltype(std::declval<std::vector<T>>().cbegin()) {
+         return _data.cbegin();
+      }
 
-         return *this;
+      auto end() const -> decltype(std::declval<std::vector<T>>().cend()) {
+         return _data.cend();
       }
 
    private:
-      T* _data;
+      std::vector<T> _data;
    };
 }

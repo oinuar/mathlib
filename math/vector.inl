@@ -196,3 +196,24 @@ Math::Vector<3, T> operator %(const Math::Vector<3, T>& lhs, const Math::Vector<
       lhs.x() * rhs.y() - lhs.y() * rhs.x()
    ));
 }
+
+template <size_t N, class T> inline
+bool operator <(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs) {
+   return std::lexicographical_compare(std::begin(lhs), std::end(lhs), std::begin(rhs), std::end(rhs));
+}
+
+template <size_t N, class T> inline
+bool operator <=(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs) {
+   return std::lexicographical_compare(std::begin(lhs), std::end(lhs), std::begin(rhs), std::end(rhs)) || lhs == rhs;
+}
+
+template <size_t N, class T> inline
+bool operator >(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs) {
+   return std::lexicographical_compare(std::begin(rhs), std::end(rhs), std::begin(lhs), std::end(lhs));
+}
+
+template <size_t N, class T> inline
+bool operator >=(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs) {
+   return std::lexicographical_compare(std::begin(rhs), std::end(rhs), std::begin(lhs), std::end(lhs)) || lhs == rhs;
+}
+

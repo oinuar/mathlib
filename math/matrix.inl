@@ -147,6 +147,16 @@ namespace Math {
       }
    }
 
+   template <size_t M, size_t N, class T, class C> inline
+   auto Matrix<M, N, T, C>::begin() const -> decltype(std::declval<C>().begin()) {
+      return _data.begin();
+   }
+
+   template <size_t M, size_t N, class T, class C> inline
+   auto Matrix<M, N, T, C>::end() const -> decltype(std::declval<C>().end()) {
+      return _data.end();
+   }
+
 
    template <class T, class Chunk> inline
    Matrix<1, 1, T, Chunk>::Matrix(const bool& initialize) {
@@ -297,4 +307,21 @@ Math::Matrix<M, P, T> operator *(const Math::Matrix<M, N, T, C>& lhs, const Math
    }
 
    return std::move(out);
+}
+
+template <size_t M, size_t N, size_t P, class T, class C, class D> inline
+bool operator ==(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, C>& rhs) {
+   for (size_t i = 1; i <= M; ++i) {
+      for (size_t j = 1; j <= N; ++j) {
+         if (lhs(i, j) != rhs(i, j))
+            return false;
+      }
+   }
+
+   return true;
+}
+
+template <size_t M, size_t N, size_t P, class T, class C, class D> inline
+bool operator !=(const Math::Matrix<M, N, T, C>& lhs, const Math::Matrix<M, N, T, C>& rhs) {
+   return !(lhs == rhs);
 }

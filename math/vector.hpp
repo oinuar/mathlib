@@ -2,6 +2,7 @@
 
 #include "matrix.hpp"
 #include "functions.hpp"
+#include <algorithm>
 
 namespace Math {
 
@@ -269,10 +270,36 @@ template <size_t N, class T> T operator *(const Math::Vector<N, T>& lhs, const M
  */
 template <class T> Math::Vector<3, T> operator %(const Math::Vector<3, T>& lhs, const Math::Vector<3, T>& rhs);
 
-template <> struct std::hash<Math::vec2> {
-   std::size_t operator()(const Math::vec2& k) const {
-      return std::hash<double>()(k.x()) ^ std::hash<double>()(k.y());
-   }
-};
+/*! Compares two vectors.
+ *
+ * @param lhs Left hand side vector to compare.
+ * @param rhs Right hand side vector to compare.
+ * @return @c true if @p lhs is less than @p rhs.
+ */
+template <size_t N, class T> bool operator <(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs);
+
+/*! Compares two vectors.
+ *
+ * @param lhs Left hand side vector to compare.
+ * @param rhs Right hand side vector to compare.
+ * @return @c true if @p lhs is less than or equal to @p rhs.
+ */
+template <size_t N, class T> bool operator <=(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs);
+
+/*! Compares two vectors.
+ *
+ * @param lhs Left hand side vector to compare.
+ * @param rhs Right hand side vector to compare.
+ * @return @c true if @p lhs is greater than @p rhs.
+ */
+template <size_t N, class T> bool operator >(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs);
+
+/*! Compares two vectors.
+ *
+ * @param lhs Left hand side vector to compare.
+ * @param rhs Right hand side vector to compare.
+ * @return @c true if @p lhs is greater than or equal to @p rhs.
+ */
+template <size_t N, class T> bool operator >=(const Math::Vector<N, T>& lhs, const Math::Vector<N, T>& rhs);
 
 #include "vector.inl"
