@@ -55,13 +55,13 @@ namespace Math {
        *
        * @return Number of rows.
        */
-      const size_t rows() const;
+      size_t rows() const;
 
       /*! Tells the number of columns.
        *
        * @return Number of columns.
        */
-      const size_t cols() const;
+      size_t cols() const;
 
       /*! Gets raw data pointer to matrix data.
        *
@@ -220,13 +220,13 @@ namespace Math {
        *
        * @return Number of rows.
        */
-      const size_t rows() const;
+      size_t rows() const;
 
       /*! Tells the number of columns.
        *
        * @return Number of columns.
        */
-      const size_t cols() const;
+      size_t cols() const;
 
       /*! Access matrix elements.
        *

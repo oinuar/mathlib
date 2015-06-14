@@ -34,12 +34,12 @@ namespace Math {
    }
 
    template <size_t M, size_t N, class T, class C> inline
-   const size_t Matrix<M, N, T, C>::rows() const {
+   size_t Matrix<M, N, T, C>::rows() const {
       return M;
    }
 
    template <size_t M, size_t N, class T, class C> inline
-   const size_t Matrix<M, N, T, C>::cols() const {
+   size_t Matrix<M, N, T, C>::cols() const {
       return N;
    }
 
@@ -187,12 +187,12 @@ namespace Math {
    }
 
    template <class T, class Chunk> inline
-   const size_t Matrix<1, 1, T, Chunk>::rows() const {
+   size_t Matrix<1, 1, T, Chunk>::rows() const {
       return 1;
    }
 
    template <class T, class Chunk> inline
-   const size_t Matrix<1, 1, T, Chunk>::cols() const {
+   size_t Matrix<1, 1, T, Chunk>::cols() const {
       return 1;
    }
 
@@ -224,8 +224,8 @@ namespace Math {
    const T* Matrix<1, 1, T, Chunk>::data() const {
       return &_value;
    }
-   
-   
+
+
    template <size_t N, class T> inline
    Matrix<N, N, T> eye() {
       Matrix<N, N, T> out(false);

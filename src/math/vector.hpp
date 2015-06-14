@@ -16,13 +16,13 @@ namespace Math {
        * @param initialize @c true to initialize all elements to zero;
        *                   otherwise elements are left uninitialized.
        */
-      Vector(const bool& initialize = true) : Matrix(initialize) {};
+      Vector(const bool& initialize = true) : Matrix<N, 1, T>(initialize) {};
 
       /*! Converts a matrix to vector.
        *
        * @param other Matrix to convert.
        */
-      Vector(const Matrix<N, 1, T>& other) : Matrix(other) {};
+      Vector(const Matrix<N, 1, T>& other) : Matrix<N, 1, T>(other) {};
    };
 
    /*! Specialized four dimensional vector.
@@ -81,7 +81,7 @@ namespace Math {
        * @return Vector W element.
        */
       T& w();
-   
+
       /*! Gets X element of vector.
        *
        * @return Vector const X element.

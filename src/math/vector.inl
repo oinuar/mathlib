@@ -2,12 +2,14 @@
 namespace Math {
 
    template <class T> inline
-   Vector<4, T>::Vector(const bool& initialize) : Matrix(initialize) {
+   Vector<4, T>::Vector(const bool& initialize) : Matrix<4, 1, T>(initialize) {
 
    }
 
    template <class T> inline
-   Vector<4, T>::Vector(const T& x, const T& y, const T& z, const T& w) : Matrix(false) {
+   Vector<4, T>::Vector(const T& x, const T& y, const T& z, const T& w)
+      : Matrix<4, 1, T>(false)
+   {
       this->x() = x;
       this->y() = y;
       this->z() = z;
@@ -15,12 +17,14 @@ namespace Math {
    }
 
    template <class T> inline
-   Vector<4, T>::Vector(const Matrix<4, 1, T>& other) : Matrix(other) {
+   Vector<4, T>::Vector(const Matrix<4, 1, T>& other) : Matrix<4, 1, T>(other) {
 
    }
 
    template <class T> inline
-   Vector<4, T>::Vector(const Vector<3, T>& other, const T& w) : Matrix(false) {
+   Vector<4, T>::Vector(const Vector<3, T>& other, const T& w)
+      : Matrix<4, 1, T>(false)
+   {
       this->x() = other.x();
       this->y() = other.y();
       this->z() = other.z();
@@ -69,24 +73,26 @@ namespace Math {
 
 
    template <class T> inline
-   Vector<3, T>::Vector(const bool& initialize) : Matrix(initialize) {
+   Vector<3, T>::Vector(const bool& initialize) : Matrix<3, 1, T>(initialize) {
 
    }
 
    template <class T> inline
-   Vector<3, T>::Vector(const T& x, const T& y, const T& z) : Matrix(false) {
+   Vector<3, T>::Vector(const T& x, const T& y, const T& z)
+      : Matrix<3, 1, T>(false)
+   {
       this->x() = x;
       this->y() = y;
       this->z() = z;
    }
 
    template <class T> inline
-   Vector<3, T>::Vector(const Matrix<3, 1, T>& other) : Matrix(other) {
+   Vector<3, T>::Vector(const Matrix<3, 1, T>& other) : Matrix<3, 1, T>(other) {
 
    }
 
    template <class T> inline
-   Vector<3, T>::Vector(const Vector<4, T>& other) : Matrix(false) {
+   Vector<3, T>::Vector(const Vector<4, T>& other) : Matrix<3, 1, T>(false) {
       this->x() = other.x();
       this->y() = other.y();
       this->z() = other.z();
@@ -124,23 +130,23 @@ namespace Math {
 
 
    template <class T> inline
-   Vector<2, T>::Vector(const bool& initialize) : Matrix(initialize) {
+   Vector<2, T>::Vector(const bool& initialize) : Matrix<2, 1, T>(initialize) {
 
    }
 
    template <class T> inline
-   Vector<2, T>::Vector(const T& x, const T& y) : Matrix(false) {
+   Vector<2, T>::Vector(const T& x, const T& y) : Matrix<2, 1, T>(false) {
       this->x() = x;
       this->y() = y;
    }
 
    template <class T> inline
-   Vector<2, T>::Vector(const Matrix<2, 1, T>& other) : Matrix(other) {
+   Vector<2, T>::Vector(const Matrix<2, 1, T>& other) : Matrix<2, 1, T>(other) {
 
    }
 
    template <class T> inline
-   Vector<2, T>::Vector(const Vector<3, T>& other) : Matrix(false) {
+   Vector<2, T>::Vector(const Vector<3, T>& other) : Matrix<2, 1, T>(false) {
       this->x() = other.x();
       this->y() = other.y();
    }
